@@ -11,7 +11,8 @@ public class EnemyMover : MonoBehaviour
     Waypoint startWaypoint;
     public RamContainer container;
 
-    void Start()
+
+    void OnEnable()
     {
         FindPath();
         ReturnToStart();
@@ -23,21 +24,23 @@ public class EnemyMover : MonoBehaviour
     {
         transform.position = startWaypoint.transform.position;
     }
-    private void OnDestroy()
+    private void OnDisable()
     {
         container.ramList.Remove(transform);
+        startWaypoint = null;
+        path.Clear();
     }
     void FindPath()
     {
-        path.Clear();
 
         GameObject[] waypoints = GameObject.FindGameObjectsWithTag("Path");
 
         foreach (var waypoint in waypoints)
+
         {
             if (waypoint.TryGetComponent(out Waypoint w))
             {
-                if (startWaypoint==null)
+                if (startWaypoint == null)
                 {
                     startWaypoint = w;
                     continue;
@@ -49,8 +52,18 @@ public class EnemyMover : MonoBehaviour
             {
                 Debug.LogError("Yanlýþ tag verilmiþ obje hatasý");
             }
-          
+
         }
+        //startWaypoint = waypoints[0].GetComponent<Waypoint>();
+        //for (int i = 1; i < waypoints.Length; i++)
+        //{
+        //    if (waypoints[i].TryGetComponent(out Waypoint w))
+        //    {
+        //        path.Add(w);
+        //    }
+        //}
+       
+
     }
     IEnumerator FollowPath()
     {
@@ -70,6 +83,6 @@ public class EnemyMover : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }  
         }
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

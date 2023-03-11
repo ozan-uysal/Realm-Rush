@@ -143,7 +143,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 288474363889db94190c562836266b75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  path: []
+  path:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   speed: 1
   container: {fileID: 11400000, guid: 74396411660771443ab2bab975bfecaf, type: 2}
 --- !u!114 &-4382070500662723569

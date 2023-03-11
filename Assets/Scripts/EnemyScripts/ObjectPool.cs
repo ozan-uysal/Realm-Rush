@@ -4,25 +4,43 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    [SerializeField] GameObject Ram;
-    [SerializeField] float waitTimeForSpawningRam = 2f;
-    bool stopSpawning = false;
+    [SerializeField] GameObject enemyPrefab;
+    [SerializeField] int poolSize = 5;
+    //[SerializeField] float spawnTimer = 2f;
+    //bool stopSpawning = false;
 
+    GameObject[] pool;
 
-    void Start()
+    void Awake()
     {
-        StartCoroutine(InstantiateRam());
+        PopulatePool();
     }
-   
 
-    IEnumerator InstantiateRam()
+
+    //void Start()
+    //{
+    //    StartCoroutine(InstantiateRam());
+    //}
+    
+    void PopulatePool()
     {
-        while (stopSpawning==false)
+        pool = new GameObject[poolSize];
+
+        for (int i = 0; i < pool.Length; i++)
         {
-            GameObject.Instantiate(Ram);
-            yield return new WaitForSeconds(waitTimeForSpawningRam);
-
+            pool[i] = Instantiate(enemyPrefab, transform);
+            pool[i].SetActive(false);
         }
-
     }
+
+    //IEnumerator InstantiateRam()
+    //{
+    //    while (stopSpawning==false)
+    //    {
+    //        GameObject.Instantiate(enemyPrefab);
+    //        yield return new WaitForSeconds(spawnTimer);
+
+    //    }
+
+    //}
 }
