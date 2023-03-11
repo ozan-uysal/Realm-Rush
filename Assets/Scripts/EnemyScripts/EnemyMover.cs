@@ -11,11 +11,18 @@ public class EnemyMover : MonoBehaviour
     Waypoint startWaypoint;
     public RamContainer container;
 
+    Vector3 endPosition;
+    Vector3 startPosition;
 
+    //private void Awake()
+    //{
+      
+    //}
     void OnEnable()
     {
         FindPath();
         ReturnToStart();
+
 
         container.ramList.Add(transform);
         StartCoroutine(FollowPath());
@@ -27,11 +34,12 @@ public class EnemyMover : MonoBehaviour
     private void OnDisable()
     {
         container.ramList.Remove(transform);
-        startWaypoint = null;
-        path.Clear();
+       
     }
     void FindPath()
     {
+        startWaypoint = null;
+        path.Clear();
 
         GameObject[] waypoints = GameObject.FindGameObjectsWithTag("Path");
 
@@ -67,11 +75,13 @@ public class EnemyMover : MonoBehaviour
     }
     IEnumerator FollowPath()
     {
+        
         foreach (Waypoint waypoint in path)
         {
+            
             //Debug.Log(waypoint.name);
-            Vector3 startPosition =transform.position;
-            Vector3 endPosition = waypoint.transform.position;
+            startPosition =transform.position;
+            endPosition = waypoint.transform.position;
             float travelPercent = 0f;
 
             transform.LookAt(endPosition);

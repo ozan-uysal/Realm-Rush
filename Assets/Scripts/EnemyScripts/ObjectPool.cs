@@ -6,8 +6,8 @@ public class ObjectPool : MonoBehaviour
 {
     [SerializeField] GameObject enemyPrefab;
     [SerializeField] int poolSize = 5;
-    //[SerializeField] float spawnTimer = 2f;
-    //bool stopSpawning = false;
+    [SerializeField] float spawnTimer = 2f;
+    bool stopSpawning = false;
 
     GameObject[] pool;
 
@@ -17,11 +17,11 @@ public class ObjectPool : MonoBehaviour
     }
 
 
-    //void Start()
-    //{
-    //    StartCoroutine(InstantiateRam());
-    //}
-    
+    void Start()
+    {
+        StartCoroutine(SpawnEnemy());
+    }
+
     void PopulatePool()
     {
         pool = new GameObject[poolSize];
@@ -32,15 +32,34 @@ public class ObjectPool : MonoBehaviour
             pool[i].SetActive(false);
         }
     }
+    void EnableObjectPool()
+    {
+        foreach (GameObject enemy in pool)
+        {
+            if (enemy.activeInHierarchy == false)
+            {
+                enemy.SetActive(true);
+                return;
+            }
+           
+        }
+        //for (int i = 0; i < pool.Length; i++)
+        //{
+        //    if (pool[i].activeInHierarchy == false)
+        //    {
+        //        pool[i].SetActive(true);
 
-    //IEnumerator InstantiateRam()
-    //{
-    //    while (stopSpawning==false)
-    //    {
-    //        GameObject.Instantiate(enemyPrefab);
-    //        yield return new WaitForSeconds(spawnTimer);
+        //    }
+        //}
+    }
+    IEnumerator SpawnEnemy()
+    {
+        while (stopSpawning == false)
+        {
+            EnableObjectPool();
+            yield return new WaitForSeconds(spawnTimer);
 
-    //    }
+        }
 
-    //}
+    }
 }
