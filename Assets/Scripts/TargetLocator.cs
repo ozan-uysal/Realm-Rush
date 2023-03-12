@@ -7,20 +7,36 @@ public class TargetLocator : MonoBehaviour
 {  
     [SerializeField] Transform weapon;
     [SerializeField] Transform target;
-    public RamContainer container;
+    public EnemyContainer container;
     public GameObject particleSpawner;
     
 
+
     private void Update()
     {
+        AimWeapon();
+    }
+    void FindClosestTarget()
+    {
+            Transform closestTarget = null;
+            float maxDistance = Mathf.Infinity;
 
-    AimWeapon();
-        
+            foreach (Transform enemy in container.enemyList)
+            {
+                float targetDistance = Vector3.Distance(transform.position, enemy.position);
+
+                if (targetDistance < maxDistance)
+                {
+                    closestTarget = enemy; 
+                    maxDistance = targetDistance;
+                }
+            }
+            target = closestTarget;
     }
 
     private void AimWeapon()
     {
-        if (container.ramList.Count <= 0)
+        if (container.enemyList.Count <= 0)
         {
             if (particleSpawner.activeSelf)
             {
@@ -35,6 +51,7 @@ public class TargetLocator : MonoBehaviour
                 particleSpawner.SetActive(true);
             }
         }
-         weapon.LookAt(container.ramList[0]);  
+        FindClosestTarget();
+        weapon.LookAt(target);
     }
 }

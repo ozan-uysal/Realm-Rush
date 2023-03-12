@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Path
   - EnemyRam
+  - Enemy
   layers:
   - Default
   - TransparentFX

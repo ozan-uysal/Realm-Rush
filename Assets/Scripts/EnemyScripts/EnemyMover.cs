@@ -9,7 +9,7 @@ public class EnemyMover : MonoBehaviour
     [SerializeField] List<Waypoint> path = new List<Waypoint>();
     [SerializeField] [Range(0f,5f)] float speed =1f;
     Waypoint startWaypoint;
-    public RamContainer container;
+    public EnemyContainer container;
 
     Vector3 endPosition;
     Vector3 startPosition;
@@ -24,7 +24,7 @@ public class EnemyMover : MonoBehaviour
         ReturnToStart();
 
 
-        container.ramList.Add(transform);
+        container.enemyList.Add(transform);
         StartCoroutine(FollowPath());
     }
     void ReturnToStart()
@@ -33,7 +33,7 @@ public class EnemyMover : MonoBehaviour
     }
     private void OnDisable()
     {
-        container.ramList.Remove(transform);
+        container.enemyList.Remove(transform);
        
     }
     void FindPath()

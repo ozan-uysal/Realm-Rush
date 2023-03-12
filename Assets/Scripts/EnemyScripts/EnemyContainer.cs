@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class RamContainer : ScriptableObject
+public class EnemyContainer : ScriptableObject
 {
-    public List<Transform> ramList;
+    public List<Transform> enemyList;
+    
 }

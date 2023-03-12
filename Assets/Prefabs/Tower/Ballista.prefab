@@ -131,7 +131,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 3144582324300694500}
-  target: {fileID: 0}
+  target:
+  - {fileID: 0}
+  enemiesTransform: []
   container: {fileID: 11400000, guid: 74396411660771443ab2bab975bfecaf, type: 2}
   particleSpawner: {fileID: 9100431267662931268}
 --- !u!1 &8293807043288370748
