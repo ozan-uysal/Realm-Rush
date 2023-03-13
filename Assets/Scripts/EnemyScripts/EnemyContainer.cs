@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class EnemyContainer : ScriptableObject
 {
-    public List<Transform> enemyList;
+    public List<Transform> enemyListTransform;
+    
     
 }

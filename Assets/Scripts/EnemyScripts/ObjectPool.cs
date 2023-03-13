@@ -30,6 +30,7 @@ public class ObjectPool : MonoBehaviour
             pool[i].SetActive(false);
         }
     }
+  
     void EnableObjectPool()
     {
         foreach (GameObject enemy in pool)

@@ -7,36 +7,44 @@ public class TargetLocator : MonoBehaviour
 {  
     [SerializeField] Transform weapon;
     [SerializeField] Transform target;
+    //[SerializeField] ParticleSystem projectileParticles;
+    [SerializeField] float range = 15;
+
     public EnemyContainer container;
+
     public GameObject particleSpawner;
-    
 
+    Transform closestTarget;
+    float maxDistance;
+    float targetDistance;
 
-    private void Update()
+    void Update()
     {
+        FindClosestTarget();
         AimWeapon();
     }
     void FindClosestTarget()
     {
-            Transform closestTarget = null;
-            float maxDistance = Mathf.Infinity;
+            closestTarget = null;
+            maxDistance = Mathf.Infinity;
 
-            foreach (Transform enemy in container.enemyList)
+            foreach (Transform enemy in container.enemyListTransform)
             {
-                float targetDistance = Vector3.Distance(transform.position, enemy.position);
-
-                if (targetDistance < maxDistance)
+               targetDistance = Vector3.Distance(transform.position, enemy.position);
+                
+                if (targetDistance < range && targetDistance < maxDistance )
                 {
-                    closestTarget = enemy; 
+                    closestTarget = enemy;
                     maxDistance = targetDistance;
                 }
             }
+            //targetDistance = maxDistance;
             target = closestTarget;
     }
 
-    private void AimWeapon()
+     void AimWeapon()
     {
-        if (container.enemyList.Count <= 0)
+        if (target == null)
         {
             if (particleSpawner.activeSelf)
             {
@@ -51,7 +59,22 @@ public class TargetLocator : MonoBehaviour
                 particleSpawner.SetActive(true);
             }
         }
-        FindClosestTarget();
+        //Atack();
         weapon.LookAt(target);
     }
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position,range);
+    }
+    //void Atack()
+    //{
+    //    if (targetDistance < range)
+    //    {
+    //        projectileParticles.Play();
+    //    }
+    //    else
+    //    {
+    //        projectileParticles.Pause();
+    //    }
+    //}
 }
