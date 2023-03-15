@@ -929,7 +929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c9333cb0f183fb42a30c042de059898, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingBalance: 150
+  startingBalance: 300
   currentBalance: 0
 --- !u!4 &875465886
 Transform:
