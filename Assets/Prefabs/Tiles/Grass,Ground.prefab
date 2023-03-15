@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49be5219b5e171c4e97443fd9840a331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerPrefab: {fileID: 3219458064393657486, guid: 8a965e088bae16643aab3d07ccfd5e2e, type: 3}
+  towerPrefab: {fileID: -8161445385198665607, guid: 8a965e088bae16643aab3d07ccfd5e2e, type: 3}
   placeableMaterial: {fileID: 2100000, guid: fd0e8fb71db64534ca9912f5ab313eae, type: 2}
   nonPlaceableMaterial: {fileID: 2100000, guid: ddcf69681088cbd4d9d77c9aa981377d, type: 2}
   isPlaceable: 1

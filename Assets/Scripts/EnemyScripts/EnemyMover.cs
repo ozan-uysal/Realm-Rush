@@ -33,7 +33,6 @@ public class EnemyMover : MonoBehaviour
      void OnDisable()
     {
         container.enemyListTransform.Remove(transform);
-
     }
     void FindPath()
     {

@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class Waypoint : MonoBehaviour
 {
-    [SerializeField] GameObject towerPrefab;
+    [SerializeField] Tower towerPrefab;
     public Material placeableMaterial;
     public Material nonPlaceableMaterial;
     Material material;
+    bool isPlaced;
 
 
     [SerializeField] bool isPlaceable;
@@ -26,13 +27,13 @@ public class Waypoint : MonoBehaviour
         
         if (isPlaceable)
         {
-            GameObject.Instantiate(towerPrefab,transform.position,Quaternion.identity);
-            isPlaceable= false;
+            isPlaced = towerPrefab.CreateTower(towerPrefab,transform.position);
+            isPlaceable = !isPlaced;
         }
     }
     private void OnMouseOver()
     {
-            meshRenderer.sharedMaterial = IsPlaceable?placeableMaterial:nonPlaceableMaterial;
+            meshRenderer.sharedMaterial = IsPlaceable ? placeableMaterial : nonPlaceableMaterial;
     }
     private void OnMouseExit()
     {
