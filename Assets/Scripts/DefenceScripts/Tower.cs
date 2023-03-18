@@ -19,6 +19,8 @@ public class Tower : MonoBehaviour
             bank.Withdraw(cost);
             return true;
         }
+  
+
         return false;
        
     }
