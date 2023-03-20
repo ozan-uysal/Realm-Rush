@@ -5,9 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
-  - Path
   - EnemyRam
   - Enemy
+  - Path1
+  - Path2
   layers:
   - Default
   - TransparentFX
