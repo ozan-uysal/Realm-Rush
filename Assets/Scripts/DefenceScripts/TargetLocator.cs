@@ -62,10 +62,10 @@ public class TargetLocator : MonoBehaviour
         //Atack();
         weapon.LookAt(target);
     }
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(transform.position,range);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.DrawWireSphere(transform.position,range);
+    //}
     //void Atack()
     //{
     //    if (targetDistance < range)

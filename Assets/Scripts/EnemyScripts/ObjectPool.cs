@@ -43,7 +43,6 @@ public class ObjectPool : MonoBehaviour
                 enemy.SetActive(true);
                 return;    
             }
-            
         }
         //for (int i = 0; i < pool.Length; i++)
         //{

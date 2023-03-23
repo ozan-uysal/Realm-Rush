@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Path1
   - Path2
+  - InCastle
   layers:
   - Default
   - TransparentFX

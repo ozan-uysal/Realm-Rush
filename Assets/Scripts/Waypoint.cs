@@ -23,8 +23,7 @@ public class Waypoint : MonoBehaviour
         material = meshRenderer.sharedMaterial;      
     }
     private void OnMouseDown()
-    {
-        
+    {  
         if (isPlaceable)
         {
             isPlaced = towerPrefab.CreateTower(towerPrefab,transform.position);
