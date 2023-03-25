@@ -32,7 +32,7 @@ public class TargetLocator : MonoBehaviour
             {
                targetDistance = Vector3.Distance(transform.position, enemy.position);
                 
-                if (targetDistance < range && targetDistance < maxDistance )
+                if (targetDistance < range && targetDistance < maxDistance)
                 {
                     closestTarget = enemy;
                     maxDistance = targetDistance;
@@ -50,7 +50,7 @@ public class TargetLocator : MonoBehaviour
             {
                 particleSpawner.SetActive(false);
             }
-            return;
+            //return;
         }
         else
         {

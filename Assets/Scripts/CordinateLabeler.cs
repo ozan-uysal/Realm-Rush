@@ -55,8 +55,8 @@ public class CordinateLabeler : MonoBehaviour
     }
     void DisplayCordinates()
     {
-        cordinates.x = Mathf.RoundToInt(transform.parent.position.x / UnityEditor.EditorSnapSettings.move.x);//WARNING yapay zeka ile ilgili hata oluþabilir.
-        cordinates.y = Mathf.RoundToInt(transform.parent.position.z / UnityEditor.EditorSnapSettings.move.z);//WARNING yapay zeka ile ilgili hata oluþabilir.
+        cordinates.x = Mathf.RoundToInt(transform.parent.position.x / (UnityEditor.EditorSnapSettings.move.x*40));//WARNING yapay zeka ile ilgili hata oluþabilir.
+        cordinates.y = Mathf.RoundToInt(transform.parent.position.z / (UnityEditor.EditorSnapSettings.move.z*40));//WARNING yapay zeka ile ilgili hata oluþabilir.
         label.text = cordinates.x + "," + cordinates.y;
     }
     void UpdateObjectName()
