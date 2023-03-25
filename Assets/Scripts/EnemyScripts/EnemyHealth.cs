@@ -4,7 +4,7 @@ using TMPro;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public static int maxHitPoints = 5;
+    public  int maxHitPoints = 5;
     public int currentHitPoints = 0;
    
     [SerializeField] int difficultyRamp = 1;
@@ -14,8 +14,7 @@ public class EnemyHealth : MonoBehaviour
     Enemy enemy;
     void OnEnable()
     {
-        currentHitPoints = maxHitPoints;
-        Debug.Log(maxHitPoints);
+        currentHitPoints = maxHitPoints; 
     }
     void Start()
     {

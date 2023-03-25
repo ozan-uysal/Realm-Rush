@@ -8,7 +8,6 @@ public class GridManager : MonoBehaviour
 
     void Start()
     {
-        Debug.Log(node.coordinates);
-        Debug.Log(node.isWalkable);
+     
     }
 }

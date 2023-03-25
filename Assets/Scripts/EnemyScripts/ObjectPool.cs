@@ -10,13 +10,9 @@ public class ObjectPool : MonoBehaviour
     bool stopSpawning = false;
 
     GameObject[] pool;
-
-    void Awake()
-    {
-        PopulatePool();
-    }
     void Start()
     {
+        PopulatePool();
         StartCoroutine(SpawnEnemy());
     }
     void PopulatePool()
