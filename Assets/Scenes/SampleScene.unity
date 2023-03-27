@@ -3539,10 +3539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93900daebaed55a49b99556758527c97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  node:
-    coordinates: {x: 0, y: 0}
-    isWalkable: 0
-    isExplored: 0
+  gridSize: {x: 100, y: 100}
 --- !u!4 &483721940
 Transform:
   m_ObjectHideFlags: 0

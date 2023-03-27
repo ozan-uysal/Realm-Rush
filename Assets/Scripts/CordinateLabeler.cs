@@ -10,16 +10,24 @@ public class CordinateLabeler : MonoBehaviour
 {
     [SerializeField] Color defaultColor= Color.white;
     [SerializeField] Color blockedColor = Color.gray;
+    [SerializeField] Color exploredColor = Color.yellow;
+    [SerializeField] Color pathColor = new Color(1f,0.5f,0f);
+    
+    Node node;
 
     TextMeshPro label;
-    Vector2Int cordinates= new Vector2Int();
-    Waypoint waypoint;
+    Vector2Int coordinates= new Vector2Int();
+    
+    GridManager gridManager;
+    
    
     private void Awake()
     {
+        gridManager = FindObjectOfType<GridManager>();
+        
         label = GetComponent<TextMeshPro>();
         label.enabled = false;
-        waypoint = GetComponentInParent<Waypoint>();
+        
         DisplayCordinates();
         UpdateObjectName();
     }
@@ -33,6 +41,7 @@ public class CordinateLabeler : MonoBehaviour
         }
         SetLabelColor();
         ToggleLabels();
+        //Debug.Log(gridManager, gridManager);
     }
     void ToggleLabels()
     {
@@ -41,26 +50,41 @@ public class CordinateLabeler : MonoBehaviour
             label.enabled = !label.IsActive();
         }
     }
-
     void SetLabelColor()
     {
-        if (waypoint.IsPlaceable/* && GetComponent<CordinateLabeler>().tag!="InCastle" */) //sor Onura
-        {
-            label.color = defaultColor;
-        }
-        else
+        if (gridManager == null) { return;}
+
+        node = gridManager.GetNode(coordinates);
+
+        if (node == null) { return; }
+       
+        if (!node.isWalkable)
         {
             label.color = blockedColor;
         }
+        else if (node.isPath)
+        {
+            label.color = pathColor;
+        }
+        else if (node.isExplored)
+        {
+            label.color = exploredColor;
+        }
+        else
+        {
+            label.color = defaultColor;
+        }
+     
+
     }
     void DisplayCordinates()
     {
-        cordinates.x = Mathf.RoundToInt(transform.parent.position.x / (UnityEditor.EditorSnapSettings.move.x*40));//WARNING yapay zeka ile ilgili hata oluþabilir.
-        cordinates.y = Mathf.RoundToInt(transform.parent.position.z / (UnityEditor.EditorSnapSettings.move.z*40));//WARNING yapay zeka ile ilgili hata oluþabilir.
-        label.text = cordinates.x + "," + cordinates.y;
+        coordinates.x = Mathf.RoundToInt(transform.parent.position.x/10);//WARNING yapay zeka ile ilgili hata oluþabilir.
+        coordinates.y = Mathf.RoundToInt(transform.parent.position.z/10);//WARNING yapay zeka ile ilgili hata oluþabilir.
+        label.text = coordinates.x + "," + coordinates.y;
     }
     void UpdateObjectName()
     {
-        transform.parent.name=cordinates.ToString();
+        transform.parent.name=coordinates.ToString();
     }
 }
