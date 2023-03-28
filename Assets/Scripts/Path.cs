@@ -9,8 +9,7 @@ public class Path : MonoBehaviour
     
     private void Awake()
     {
-        CreatePath();
-        
+        CreatePath(); 
     }
     private void OnEnable()
     {

@@ -12,10 +12,9 @@ public class Node
     public Node connectedTo;
     public bool isPath;
 
-    public Node(Vector2Int coordinates,bool isWalkable)
+    public Node(Vector2Int coordinates, bool isWalkable)
     {
         this.coordinates = coordinates;
         this.isWalkable = isWalkable;
-        
     }
 }

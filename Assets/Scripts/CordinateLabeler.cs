@@ -19,19 +19,16 @@ public class CordinateLabeler : MonoBehaviour
     Vector2Int coordinates= new Vector2Int();
     
     GridManager gridManager;
-    
-   
     private void Awake()
     {
         gridManager = FindObjectOfType<GridManager>();
         
         label = GetComponent<TextMeshPro>();
-        label.enabled = false;
+        label.enabled = true;
         
         DisplayCordinates();
         UpdateObjectName();
     }
-
     void Update()
     {
         if (Application.isPlaying)
@@ -74,8 +71,6 @@ public class CordinateLabeler : MonoBehaviour
         {
             label.color = defaultColor;
         }
-     
-
     }
     void DisplayCordinates()
     {
