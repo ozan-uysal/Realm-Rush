@@ -6,10 +6,10 @@ using UnityEngine;
 [RequireComponent(typeof(Enemy))]
 public class EnemyMover : MonoBehaviour
 {
-    public List<Waypoint> path;
+    public List<Tile> path;
     public PathContainer pathContainer;
     [SerializeField] [Range(0f,5f)] float speed =1f;
-    Waypoint startWaypoint;
+    Tile startTile;
     public EnemyContainer container;
     Enemy enemy;
 
@@ -23,14 +23,14 @@ public class EnemyMover : MonoBehaviour
     void OnEnable()
     {
         path = pathContainer.GetRandomPath();
-        startWaypoint = path[0];
+        startTile = path[0];
         ReturnToStart();
         container.enemyListTransform.Add(transform);
         StartCoroutine(FollowPath());
     }
     void ReturnToStart()
     {
-        transform.position = startWaypoint.transform.position;
+        transform.position = startTile.transform.position;
     }
      void OnDisable()
     {

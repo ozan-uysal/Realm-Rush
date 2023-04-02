@@ -5,7 +5,7 @@ using UnityEngine;
 public class Path : MonoBehaviour
 {
     public PathContainer pathContainer;
-    List<Waypoint> path;
+    List<Tile> path;
     
     private void Awake()
     {
@@ -22,11 +22,11 @@ public class Path : MonoBehaviour
     void CreatePath()
     {
         //GameObject parent = GameObject.FindGameObjectWithTag("Path");
-            path = new List<Waypoint>();
+            path = new List<Tile>();
 
             foreach (Transform wayPointChild in transform)
             {
-                if (wayPointChild.TryGetComponent(out Waypoint w))
+                if (wayPointChild.TryGetComponent(out Tile w))
                 {
                     path.Add(w);
                 }

@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu]
 public class PathContainer : ScriptableObject
 {
-    public List<List<Waypoint>> paths = new List<List<Waypoint>>();
-    public List<Waypoint> GetRandomPath()
+    public List<List<Tile>> paths = new List<List<Tile>>();
+    public List<Tile> GetRandomPath()
         {
         return paths[Random.Range(0,paths.Count)];
         }
