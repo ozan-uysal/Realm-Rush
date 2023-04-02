@@ -12,17 +12,34 @@ public class Tile : MonoBehaviour
     Material material;
     bool isPlaced;
 
+    GridManager gridManager;
+    Vector2Int coordinates = new Vector2Int();
 
+
+    private void Awake()
+    {
+        gridManager = FindObjectOfType<GridManager>();
+    }
+
+    void Start()
+    {
+        meshRenderer = GetComponentInChildren<MeshRenderer>();
+        material = meshRenderer.sharedMaterial;
+
+        if (gridManager != null)
+        {
+            coordinates = gridManager.GetCoordinatesFromPosition(transform.position);
+            if(!isPlaceable) 
+            {
+                gridManager.BlockNode(coordinates);
+            }
+        }
+    }
     [SerializeField] bool isPlaceable;
     public bool IsPlaceable {  get {return isPlaceable; } }
 
     MeshRenderer meshRenderer;
 
-    private void Start()
-    {
-        meshRenderer = GetComponentInChildren<MeshRenderer>();
-        material = meshRenderer.sharedMaterial;      
-    }
     private void OnMouseDown()
     {  
         if (isPlaceable)

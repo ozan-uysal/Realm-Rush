@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.UIElements;
 
 [ExecuteAlways]
 [RequireComponent(typeof(TextMeshPro))]
@@ -74,9 +75,12 @@ public class CordinateLabeler : MonoBehaviour
     }
     void DisplayCordinates()
     {
-        coordinates.x = Mathf.RoundToInt(transform.parent.position.x/10);//WARNING yapay zeka ile ilgili hata oluþabilir.
-        coordinates.y = Mathf.RoundToInt(transform.parent.position.z/10);//WARNING yapay zeka ile ilgili hata oluþabilir.
-        label.text = coordinates.x + "," + coordinates.y;
+        if (gridManager == null) { return; }
+        {
+            coordinates.x = Mathf.RoundToInt(transform.parent.position.x /gridManager.UnityGridSize);
+            coordinates.y = Mathf.RoundToInt(transform.parent.position.z / gridManager.UnityGridSize);
+            label.text = coordinates.x + "," + coordinates.y;
+        }
     }
     void UpdateObjectName()
     {
